@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Team One and Done - Machine Learning</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Resources -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
+  <!-- <script src=“https://www.amcharts.com/lib/4/themes/kelly.js”></script> -->
+
+  <script src="{{ url_for('static', filename='wordcloud.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/php-mail-form/validate.js') }}"></script>
+  <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+    Template Name: Flatty
+    Template URL: https://templatemag.com/flatty-bootstrap-app-landing-page-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="#"><b>Machine Learning with Natural Language Processing</b></a>
+      </div>
+      <div class="navbar-collapse collapse">
+       <ul class="nav navbar-nav navbar-right">
+          
+        </ul>
+      </div> 
+      <!--/.nav-collapse --> 
+    </div>
+  </div>
+
+ <div id="headerwrap">
+    <div class="container">
+      <h1>Predicting Political Speech by Decade</h1>
+        
+      </div>
+       
+    </div>
+    
+  </div>
+
+  <div class="container">
+    <div>
+      <h1 id="title">Wordcloud:</h1>
+      <div class="slidecontainer">
+          <input type="range" min="0" max="23" value="50" class="slider" id="myRange">
+          <label id="outRange">
+      </div>
+      <div id="wordcloud"></div>
+
+  </div>
+</div>
+
+  <div class="container">
+      <div class="row mt centered">
+    <div id="chartdiv2"></div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row mt centered">
+  <div id="chartdiv"></div>
+</div>
+</div>
+
+ <div class="container">
+    <div class="row mt centered">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h1>What we did</h1>
+  
+      </div>
+    </div>
+    <!-- /row -->
+
+    <div class="row mt centered">
+      <div class="col-lg-4">
+        <img src="{{ url_for('static', filename='img/pres.png') }}" width="180" alt="">
+        <h4>The Data</h4>
+        <p>Using Beautiful Soup, we web-scraped the Miller Center's collection of presidential speeches and the Commission on Presidential Debates collection of debate transcripts. <br> 
+          We cleaned and dumped the data into a Mongo database for exploration and testing.
+        </p>
+      </div>
+      <!--/col-lg-4 -->
+
+      <div class="col-lg-4">
+        <img src="{{ url_for('static', filename='img/ml.png') }}" width="180" alt="">
+        <h4>Machine Learning</h4>
+        <p>We trained and tested our data on SkLearn's Multinomial Naeve Bayes algorithm and were able to predict the decade of a text within 50%. <br>
+        We also utilized Indico.io's text analysis API to extract political and emotional trends from the text.</p>
+
+      </div>
+      <!--/col-lg-4 -->
+
+      <div class="col-lg-4">
+        <img src="{{ url_for('static', filename='img/vis.png') }}" width="180" alt="">
+        <h4>Visualizations</h4>
+        <p>We created a Flask API to display a bootstrap template of our findings. Our visualizations were created with amCharts, a d3 based Javascript library. </p>
+
+      </div>
+      <!--/col-lg-4 -->
+    </div>
+    <!-- /row -->
+  </div>
+
+  <!-- /container -->
+
+  <div class="container">
+    <hr>
+    <div class="row centered">
+      <div class="col-lg-12">
+        <h1>Now it's your turn</h1>
+        <h3>Enter a text and let our machine learning algorithm work it's magic!</h3>
+        <form method="POST" action="/response">
+          <textarea type="text" name="sample" required rows=15 cols = 100></textarea><br>
+          <input type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /row -->
+    <hr>
+  </div>
+  <!-- /container -->
+
+  <div class="container">
+    <div class="row mt centered">
+      <div class="col-lg-6 col-lg-offset-3">
+        {% if sample %}
+         <h1>Result: </h1>
+         {{sample}}
+         {% endif %}
+        
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+
+
+  <div class="container">
+    <div class="row mt centered">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h1>The Team</h1>
+      </div>
+    </div>
+    <!-- /row -->
+
+    <div class="row mt centered">
+      <div class="col-lg-12">
+        <img class="img-circle" src="{{ url_for('static', filename='team.png') }}" width="150" alt="">
+        <h4>Heloisa Walsh, JD Wright, Kate Prevost, Madeline Glasheen, Jae Lee, Erin Cunningham, Sruthi Rajeswari</h4>
+        
+      </div>
+      <!--/col-lg-4 -->
+
+    <!-- /row -->
+  </div>
+</div>
+  <!-- /container -->
+
+
+  <div id="copyrights">
+    <div class="container">
+      <p>
+        &copy; Copyrights <strong>Flatty</strong>. All Rights Reserved
+      </p>
+      <div class="credits">
+        <!--
+          You are NOT allowed to delete the credit link to TemplateMag with free version.
+          You can delete the credit link only if you bought the pro version.
+          Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/flatty-bootstrap-app-landing-page-template/
+          Licensing information: https://templatemag.com/license/
+        -->
+        Created with Flatty template by <a href="https://templatemag.com/">TemplateMag</a>
+      </div>
+    </div>
+  </div>
+  <!-- / copyrights -->
+
+  <!-- JavaScript Libraries -->
+
+
+  <!--Viz JS-->
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+<script src="{{ url_for('static', filename='js/viz.js') }}"></script>
+<script src="{{ url_for('static', filename='js/amstack.js') }}"></script>
+</html>
